@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  scroll-behavior: smooth;
+  display: flex;
+  align-items: center;
+  /* background-color: aqua; */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+  flex-direction: column;
+}
+
+img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  /* position: relative;
+  left: 200px;
+  bottom: 50px; */
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 120px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+}
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 120px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+  height: 80vh;
+
+  display: flex;
+  align-items: center;
+}
+.new-messages-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+  height: auto;
+
+  display: flex;
+  align-items: left;
+}
+ul {
+  overflow-y: scroll;
+  height: 60vh;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  padding: 10px;
+  margin-top: 5px;
+}
+.message-items {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.messages {
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px dotted grey;
+}
+h1 {
+  font-size: 50px;
+  text-align: left;
+  /* margin-top: 20px; */
+  text-align: center;
+}
+h4 {
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: 15px;
+}
+button {
+  margin-top: 30px;
+  padding: 10px;
+  width: 100%;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.sub-heading {
+  color: rgb(102, 101, 101);
+  text-align: center;
+}
+button:active,
+button:hover {
+  cursor: pointer;
+}
+button:active {
+  background-color: rgb(84, 83, 83);
+}
+
+.heading {
+  margin-bottom: 10px;
+}
+.open-btn {
+  margin-bottom: 10px;
+}
+strong {
+  margin-top: 3px;
+}
+.add-greeting {
+  width: 240px;
+  padding: 15px;
+}
+.new-msg-img {
+  width: 140px;
+}
+.form-container {
+  img {
+    position: relative;
+    left: 200px;
+  }
+}

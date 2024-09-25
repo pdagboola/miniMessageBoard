@@ -2,6 +2,8 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const path = require("node:path");
 const app = express();
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 
 const messages = [
   { text: "Hey there", user: "Peter", added: new Date() },

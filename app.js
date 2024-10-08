@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("node:path");
 const app = express();
+const assetsPath = path.join(__dirname, "public")
+
 
 const messagesRoute = require("./routes/messageRoute");
 const { initializeDatabase } = require("./db/populatedb");

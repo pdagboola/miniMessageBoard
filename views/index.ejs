@@ -18,25 +18,54 @@
         <img src="../assets/miniMessage.png" alt="website-logo" />
         <h1>Recorded Greetings</h1>
         <ul>
+          <%if (locals.usersNotFound){%>
+          <p class="sub-heading new-sub-heading"><%=usersNotFound%></p>
+          <%}%> <%if(locals.messages)%>
           <div>
             <% messages.forEach((message, i)=>{ %><br />
             <div class="messages">
               <h2 class="message-items">Message <%=i+1%></h2>
-              <strong>Author: </strong><%=message.user%><br />
+              <strong>Author: </strong><%=message.username%><br />
               <strong>Greeting: </strong><%=message.text%><br />
-              <strong>Date Added: </strong><%=message.added%>
-              <a
-                href="/message?user=<%=message.user%>&text=<%=message.text%>&added=<%=message.added%>"
-              >
-                <button class="open-btn">Open</button></a
-              >
+              <strong>Date Added: </strong><%=message.date%>
+              <div class="open-edit btns">
+                <a
+                  href="/message?user=<%=message.username%>&text=<%=message.text%>&added=<%=message.date%>"
+                >
+                  <button class="add-greeting">Open</button></a
+                >
+                <a
+                  href="/update?user=<%=message.username%>&text=<%=message.text%>&added=<%=message.date%>&id=<%=message.id%>"
+                >
+                  <button class="open-btn update-btn add-greeting">
+                    Edit
+                  </button></a
+                >
+              </div>
             </div>
             <% })%>
           </div>
         </ul>
-        <a href="/new">
-          <button class="add-greeting">Add Greeting</button>
-        </a>
+        <div class="btns">
+          <a href="/new">
+            <button class="add-greeting">Add Greeting</button>
+          </a>
+          <div>
+            <a href="/search"
+              ><button class="add-greeting">Search Users</button></a
+            >
+
+            <form action="/delete" method="post">
+              <button
+                type="submit"
+                onclick="return confirm(`Are you sure you want to delete entered user?`)"
+                class="add-greeting red"
+              >
+                Delete Users
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </body>

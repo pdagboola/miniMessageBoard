@@ -72,6 +72,8 @@ ul {
 input {
   padding: 10px;
   margin-top: 5px;
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+  border-radius: 5px;
 }
 .message-items {
   margin-top: 20px;
@@ -102,9 +104,14 @@ button {
   color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+.hidden {
+  display: hidden;
+}
 .sub-heading {
   color: rgb(102, 101, 101);
   text-align: center;
+  /* width: 430px; */
+  margin-top: 15px;
 }
 button:active,
 button:hover {
@@ -124,8 +131,9 @@ strong {
   margin-top: 3px;
 }
 .add-greeting {
-  width: 240px;
+  width: 120px;
   padding: 15px;
+  margin-left: 10px;
 }
 .new-msg-img {
   width: 140px;
@@ -135,4 +143,36 @@ strong {
     position: relative;
     left: 200px;
   }
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  /* position: absolute;
+  bottom: 150px; */
+  div {
+    display: flex;
+  }
+}
+.open-edit {
+  justify-content: left;
+}
+.new-input {
+  padding: 5px;
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.search-button {
+  margin: 5px 0 0 10px;
+  padding: 15px;
+}
+.search-input {
+  display: flex;
+}
+.new-sub-heading {
+  width: 400px;
 }

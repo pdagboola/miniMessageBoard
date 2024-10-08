@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h1>Update User</h1>
+        <form action="/update" method="post">
+          <div class="input new-input">
+            <label for="user">Username</label>
+            <input type="text" name="user" value="<%=username%>" id="user" />
+          </div>
+          <div class="input new-input">
+            <label for="greeting">Greeting</label>
+            <input
+              type="text"
+              name="greeting"
+              value="<%=greeting%>"
+              id="greeting"
+            />
+          </div>
+          <div class="input new-input">
+            <label for="id">Id</label>
+            <input readonly type="text" name="id" value="<%=id%>" id="id" />
+          </div>
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

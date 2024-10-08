@@ -1,0 +1,100 @@
+const pool = require("./pool");
+// const { initializeDatabase } = require("./populatedb");
+
+async function getUserNames() {
+  try {
+    const { rows } = await pool.query(`SELECT 
+  CASE 
+    WHEN EXISTS (
+      SELECT 1 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public' 
+      AND table_name = 'messages'
+    ) THEN 'Table exists'
+    ELSE 'Table does not exist'
+  END AS table_status;
+`);
+    console.log(rows[0].table_status);
+    if (rows[0].table_status === "Table exists") {
+      const { rows } = await pool.query("SELECT * FROM messages ");
+
+      // console.log(rows);
+      return rows;
+    }
+  } catch (err) {
+    console.log("Error getting usernames:", err);
+    throw err;
+  }
+}
+
+async function searchUserNames(username) {
+  try {
+    const { rows } = await pool.query(
+      "SELECT * FROM messages WHERE username LIKE $1",
+      [`%${username}%`]
+    );
+    console.log(rows);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+async function searchById(id) {
+  try {
+    const { rows } = await pool.query("SELECT * FROM messages WHERE id = $1", [
+      id,
+    ]);
+    console.log(rows);
+    return rows;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+async function updateUserNames(id, newUsername, newText) {
+  const rows = await searchById(id);
+
+  try {
+    console.log("updating...");
+    await pool.query(
+      `UPDATE messages
+SET username = $1, text = $2
+WHERE id = $3`,
+      [newUsername, newText, id]
+    );
+    console.log("update done");
+  } catch (err) {
+    console.log("Couldn't update name", err);
+  }
+}
+async function insertUserName(username, text) {
+  try {
+    // await populateDatabase();
+    await pool.query("INSERT INTO messages (username, text) VALUES ($1, $2)", [
+      username,
+      text,
+    ]);
+  } catch (err) {
+    console.log("Error inserting names", err);
+    throw err;
+  }
+}
+
+async function deleteUserName() {
+  try {
+    console.log("deleting...");
+    await pool.query("DROP TABLE IF EXISTS messages");
+    console.log("Table 'messages' has been dropped successfully.");
+  } catch (err) {
+    console.error("Error dropping table:", err);
+    throw err;
+  }
+}
+module.exports = {
+  getUserNames,
+  searchUserNames,
+  insertUserName,
+  deleteUserName,
+  updateUserNames,
+};
